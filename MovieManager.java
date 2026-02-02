@@ -12,21 +12,18 @@ public class MovieManager {
 
     private List<Movie> movies;
 
-    // ... your other fields + constructor + methods
-
-    /**
-     * Saves all movies back to the data file in the format:
-     * Duration,Title,Year
-     */
     public void saveMovieListToFile() {
-        // If your project uses res/ folder, this is typically correct:
         String filePath = "res/movies.txt";
 
-        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath, false)))) {
+        try (PrintWriter pw = new PrintWriter(
+                new BufferedWriter(new FileWriter(filePath, false)))) {
+
             for (Movie m : movies) {
-                // Match the file format (no extra spaces): 91,Gravity,2013
-                pw.println(m.getDuration() + "," + m.getTitle() + "," + m.getYear());
+                pw.println(m.getDuration() + "," +
+                           m.getTitle() + "," +
+                           m.getYear());
             }
+
         } catch (IOException e) {
             System.out.println("Error saving movies to file.");
         }
